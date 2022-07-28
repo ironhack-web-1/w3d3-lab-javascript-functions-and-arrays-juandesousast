@@ -190,9 +190,38 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() { 
+function greatestProduct(matrix) {
+
+  let maxProduct = 0;
+
+  for (let i = 0; i < matrix.length; i++)
+        {
+            for (let j = 0; j < matrix.length; j++)
+            {
+                if ((j - 3) >= 0)
+                {
+                    result = matrix[i][j] * matrix[i][j - 1]
+                            * matrix[i][j - 2]
+                            * matrix[i][j - 3];
+                    
+                    maxProduct = Math.max(maxProduct,result);
+                }
  
+                if ((i - 3) >= 0)
+                {
+                    result = matrix[i][j] * matrix[i - 1][j]
+                            * matrix[i - 2][j]
+                            * matrix[i - 3][j];
+ 
+                    maxProduct = Math.max(maxProduct,result);
+                }
+              }
+            }
+  return maxProduct;
 }
+
+
+console.log(greatestProduct(matrix));
 
 
 
